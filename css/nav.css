@@ -227,7 +227,7 @@ margin-left: 5px;
     color: #f7b910;
   }
   .chuxiandonghua{
-    opacity: 0; /* 初始时透明度为0，即隐藏状态 */
+    opacity: 1; /* 初始时透明度为0，即隐藏状态 */
     transform: translateX(-100%); /* 初始时向左偏移100% */
     transition: opacity 0.1s, transform 1.0s; /* 过渡效果 */
   }
