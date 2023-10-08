@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVG点击显示文字</title>
+    <title>点击空白处显示文字</title>
     <style>
         /* 添加一些样式以美化文字 */
         #text-container {
@@ -268,12 +268,16 @@
         var svgCircle = document.getElementById("svg-circle");
         var textContainer = document.getElementById("text-container");
 
-        // 添加点击事件处理程序
-        svgCircle.addEventListener("click", function() {
-            // 当点击SVG图像时，显示文字
-            textContainer.style.display = "block";
+        // 添加点击事件处理程序到文档
+        document.addEventListener("click", function(event) {
+            // 检查点击的目标是否为SVG图像
+            if (event.target !== svgCircle) {
+                // 当点击页面空白处时，显示文字
+                textContainer.style.display = "block";
+            }
         });
     </script>
 </body>
 </html>
+
 
