@@ -7,20 +7,26 @@
     <div id="contentsValue"></div>
 
     <script>
-        // 获取 URL 中的参数
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      
+       // 在网页中监听从小程序发送的数据
+window.addEventListener('message', function (event) {
+    var dataFromMiniProgram = event.data;
+    
+    // 获取页面上的一个元素，例如一个<div>元素
+    var displayElement = document.getElementById('contentsValue');
+    
+    // 检查数据是否存在，并将其显示在页面上
+    if (dataFromMiniProgram && displayElement) {
+        // 假设数据的键是 "contents"，你可以根据实际情况修改
+        if (dataFromMiniProgram.contents) {
+            // 在页面上显示数据
+            displayElement.innerText = 'Contents参数的值是：'+dataFromMiniProgram.contents;
         }
+    }
+});
 
-        // 获取 contents 参数的值
-        var contents = getUrlParameter('contents');
 
-        // 将contents参数的值显示在页面上
-        var contentsValueElement = document.getElementById('contentsValue');
-        contentsValueElement.textContent = 'Contents参数的值是：' + contents;
+
     </script>
 </body>
 </html>
