@@ -1,39 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>点击空白处显示文字</title>
-    <style>
-        /* 添加一些样式以美化文字 */
-        #text-container {
-            display: none;
-            background-color:#fff;
-            color: #000;
-            font-size: 24px;
-            position: absolute;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
+    <title>显示contents参数</title>
 </head>
 <body>
-
-
+    <div id="contentsValue"></div>
 
     <script>
-     function getUrlParameter(name) {
-  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-  var results = regex.exec(location.search);
-  return results === null ? '6' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
+        // 获取 URL 中的参数
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
 
-// 获取 contents 参数的值
-var contents = getUrlParameter('contents');
-        console.log(contents)
+        // 获取 contents 参数的值
+        var contents = getUrlParameter('contents');
+
+        // 将contents参数的值显示在页面上
+        var contentsValueElement = document.getElementById('contentsValue');
+        contentsValueElement.textContent = 'Contents参数的值是：' + contents;
     </script>
 </body>
 </html>
+
 
 
